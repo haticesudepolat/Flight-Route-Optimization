@@ -1,11 +1,6 @@
-from src.graph_builder import build_sample_graph
+from src.graph_builder import build_real_graph
 
-G = build_sample_graph()
+G = build_real_graph()
 
-print("Nodes:")
-for node in G.nodes(data=True):
-    print(node)
-
-print("\nEdges:")
-for edge in G.edges(data=True):
-    print(edge)
+print("Number of nodes:", G.number_of_nodes())
+print("Number of edges:", G.number_of_edges())

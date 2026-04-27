@@ -1,32 +1,25 @@
 import networkx as nx
 from src.distance import haversine
+from src.data_loader import load_airports, load_routes
 
-def build_sample_graph():
+def build_real_graph():
     G = nx.Graph()
 
-    # Sample airports with coordinates
-    airports = {
-        "IST": (41.0082, 28.9784),
-        "PAR": (48.8566, 2.3522),
-        "LON": (51.5074, -0.1278)
-    }
+    airports = load_airports("data/airports.dat")
+    routes = load_routes("data/routes.dat")
 
     # Add nodes
     for code, (lat, lon) in airports.items():
         G.add_node(code, lat=lat, lon=lon)
 
-    # Add edges with distance (weight)
-    connections = [
-        ("IST", "PAR"),
-        ("PAR", "LON")
-    ]
+    # Add edges
+    for src, dst in routes:
+        if src in airports and dst in airports:
+            lat1, lon1 = airports[src]
+            lat2, lon2 = airports[dst]
 
-    for a, b in connections:
-        lat1, lon1 = airports[a]
-        lat2, lon2 = airports[b]
+            distance = haversine(lat1, lon1, lat2, lon2)
 
-        distance = haversine(lat1, lon1, lat2, lon2)
-
-        G.add_edge(a, b, weight=distance)
+            G.add_edge(src, dst, weight=distance)
 
     return G
