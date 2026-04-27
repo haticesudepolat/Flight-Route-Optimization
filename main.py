@@ -1,4 +1,11 @@
-from src.distance import haversine
+from src.graph_builder import build_sample_graph
 
-d = haversine(41.0082, 28.9784, 48.8566, 2.3522)
-print("Distance:", d)
+G = build_sample_graph()
+
+print("Nodes:")
+for node in G.nodes(data=True):
+    print(node)
+
+print("\nEdges:")
+for edge in G.edges(data=True):
+    print(edge)
