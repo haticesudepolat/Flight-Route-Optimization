@@ -37,7 +37,7 @@ G = build_real_graph()
 # --- ARAYÜZ ---
 root = tk.Tk()
 root.geometry("1100x905")
-root.title("Uçuş Optimizasyonu - İrem Duman")
+root.title("Dinamik Uçuş Simülasyonu ve Rota Optimizasyonu")
 root.configure(bg="#f0f2f5")
 
 # Maliyet Göstergesi İçin Etiket
