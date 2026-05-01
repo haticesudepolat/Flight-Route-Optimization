@@ -1,5 +1,6 @@
 from src.graph_builder import build_real_graph
-from dijkstra_algorithm import find_shortest_path # Senin yazdığın dosya
+from dijkstra_algorithm import find_shortest_path 
+from src.gui import FlightGUI 
 
 def main():
     # 1. Grafı Oluştur
@@ -32,8 +33,14 @@ def main():
             print(f"\nTOPLAM MESAFE: {total_distance:.2f} km")
             print("="*40)
 
+            # 6. GUI / Görselleştirmeyi Başlat (EKLEDİĞİMİZ KISIM)
+            print("\nHarita simülasyonu hazırlanıyor, lütfen bekleyin...")
+            # Senin algoritman tarafından bulunan 'path' verisini İrem'in arayüzüne gönderiyoruz
+            app = FlightGUI(G, path)
+            app.run()
+
     except Exception as e:
-        print(f"Algoritma çalışırken bir hata oluştu: {e}")
+        print(f"Algoritma çalışırken veya GUI başlatılırken bir hata oluştu: {e}")
 
 if __name__ == "__main__":
     main()
