@@ -1,6 +1,6 @@
 from src.graph_builder import build_real_graph
 from dijkstra_algorithm import find_shortest_path 
-from src.gui import FlightGUI 
+from src.gui import FlightGUI
 
 def main():
     # 1. Grafı Oluştur
